@@ -143,7 +143,6 @@ txaio==23.1.1
 typing_extensions==4.12.2
 tzdata==2025.1
 ufoLib2==0.13.1
-unattended-upgrades==0.1
 unicodedata2==14.0.0
 unyt==2.8.0
 urllib3==1.26.20
