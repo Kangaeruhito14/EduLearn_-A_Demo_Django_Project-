@@ -23,7 +23,6 @@ click==8.1.8
 cmyt==1.0.4
 colorama==0.4.6
 colorspacious==1.1.2
-command-not-found==0.3
 constantly==23.10.4
 cryptography==44.0.0
 cssselect==1.1.0
