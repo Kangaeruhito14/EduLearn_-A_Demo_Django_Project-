@@ -11,7 +11,6 @@ beniget==0.4.1
 bitarray==2.9.2
 bitstring==4.1.4
 blinker==1.4
-Brlapi==0.8.3
 Brotli==1.0.9
 CacheControl==0.12.10
 certifi==2024.12.14
