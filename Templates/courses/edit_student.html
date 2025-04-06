@@ -1,0 +1,22 @@
+{% extends "courses/base.html" %}
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Edit Student Details</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-3 form-group">
+        <label for="name" class="mb-2">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
+    </div>
+    <div class="mb-3 form-group">
+        <label for="email" class="mb-2">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
+    </div>
+    <button type="submit" class="mb-3 btn btn-primary">Update Student</button>
+    <a href="{% url 'student_list' student.enrolled_courses.first.id %}" class="mb-3 btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

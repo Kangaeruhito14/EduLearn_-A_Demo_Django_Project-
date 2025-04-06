@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: edulearn
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn EduLearn.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: EduLearn.settings
+      - key: SECRET_KEY
+        generateValue: true
