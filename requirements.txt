@@ -132,7 +132,6 @@ six==1.17.0
 soupsieve==2.3.1
 sqlparse==0.5.3
 sympy==1.9
-systemd-python==234
 tinycss2==1.1.1
 toml==0.10.2
 tomli==2.2.1
