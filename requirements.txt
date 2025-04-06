@@ -48,7 +48,6 @@ gcloud==0.18.3
 googleapis-common-protos==1.66.0
 gunicorn==23.0.0
 h5py==3.6.0
-h5py.-debian-h5py-serial==3.6.0
 html5lib==1.1
 httplib2==0.22.0
 hyperlink==21.0.0
