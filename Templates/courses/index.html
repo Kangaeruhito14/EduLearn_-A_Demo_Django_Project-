@@ -56,7 +56,7 @@
         <tr>
           <td class="fw-semibold">{{ course.title }}</td>
           <td>{{ course.description|truncatewords:5 }}</td>
-          <td>{{ course.duration }}</td>
+          <td class="text-center">{{ course.duration }}</td>
           <td>
             {% if course.thumbnail_url %}
               <img src="{{ course.thumbnail_url }}" alt="Thumbnail for {{ course.title }}"
