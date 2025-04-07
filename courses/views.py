@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from .models import Course, Lesson, Student
 from .forms import CourseForm, LessonForm, StudentForm, UserUpdateForm
 from django.contrib import messages
+from django.conf import settings
 # from django.views.generic import ListView, DetailView
 # from django.views.generic.edit import CreateView
 # from django.urls import reverse_lazy
@@ -22,8 +23,8 @@ def home(request):
         send_mail(
             subject=f'Contact Form from {email}',
             message=message,
-            from_email='noreply@edulearn.com',
-            recipient_list=['support@edulearn.com'],
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=['fantasyfalcoon91@gmail.com'],
             fail_silently=False,
         )
         messages.success(request, "Your message has been sent!")
