@@ -15,7 +15,7 @@ from .serializers import CourseSerializer
 
 # Home Page
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'courses/home.html')
 
 # Course List
 @login_required
