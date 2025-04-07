@@ -2,21 +2,31 @@
 {% block title %}Edit Student{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <h2 class="mb-4">Edit Student Details</h2>
+<div class="container mt-5">
+  <!-- Heading Section -->
+  <h2 class="text-center text-primary mb-4">Edit Student Details</h2>
 
-  <form method="POST">
+  <!-- Form for Editing Student -->
+  <form method="POST" class="p-4 border rounded bg-light shadow-sm">
     {% csrf_token %}
-    <div class="mb-3 form-group">
-        <label for="name" class="mb-2">Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
+    
+    <!-- Name Input -->
+    <div class="mb-4 form-group">
+      <label for="name" class="form-label text-muted">Name</label>
+      <input type="text" class="form-control form-control-lg" id="name" name="name" value="{{ student.name }}" required>
     </div>
-    <div class="mb-3 form-group">
-        <label for="email" class="mb-2">Email</label>
-        <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
+    
+    <!-- Email Input -->
+    <div class="mb-4 form-group">
+      <label for="email" class="form-label text-muted">Email</label>
+      <input type="email" class="form-control form-control-lg" id="email" name="email" value="{{ student.email }}" required>
     </div>
-    <button type="submit" class="mb-3 btn btn-primary">Update Student</button>
-    <a href="{% url 'student_list' student.enrolled_courses.first.id %}" class="mb-3 btn btn-secondary">Cancel</a>
+    
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-success btn-lg w-45">Update Student</button>
+      <a href="{% url 'student_list' student.enrolled_courses.first.id %}" class="btn btn-outline-secondary btn-lg w-45">Cancel</a>
+    </div>
   </form>
 </div>
 {% endblock %}

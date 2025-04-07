@@ -1,12 +1,22 @@
 {% extends "courses/base.html" %} 
 {% block title %}{{ course.id|default:"Create"}} Course{% endblock %} 
+
 {% block content %}
-<div class="container mt-4">
-  <h2>{{ course.id|default:"Create" }} Course</h2>
-  <form method="post" enctype="multipart/form-data" class="p-4 border rounded bg-white shadow-sm">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-success w-100">Save Course</button>
+<div class="container mt-5">
+  <!-- Heading -->
+  <h2 class="text-center mb-4">{{ course.id|default:"Create" }} Course</h2>
+
+  <!-- Form Section -->
+  <form method="post" enctype="multipart/form-data" class="p-5 bg-white border rounded shadow-lg">
+    {% csrf_token %}
+    <div class="mb-3">
+      <!-- Dynamically render form fields with better styling -->
+      {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-success w-100 mt-3">Save Course</button>
   </form>
-  <a href="{% url 'course_list' %}" class="btn btn-secondary mt-3">Back to Courses</a>
+
+  <!-- Back Button -->
+  <a href="{% url 'course_list' %}" class="btn btn-secondary mt-4">Back to Courses</a>
 </div>
 {% endblock %}

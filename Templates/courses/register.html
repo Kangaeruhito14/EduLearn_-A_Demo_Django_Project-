@@ -2,13 +2,30 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>Register</h2>
-    <form method="post" class="p-4 border rounded bg-white shadow-sm">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary w-100">Register</button>
-    </form>
-    <p class="mt-3">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+<!-- Container with Background Image -->
+<div class="container-fluid position-relative min-vh-100" style="background-image: url('https://cdn.elearningindustry.com/wp-content/uploads/2021/11/shutterstock_213333985.jpg'); background-size: cover; background-position: center; background-blend-mode: darken;">
+  <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+
+  <!-- Centered Form -->
+  <div class="d-flex justify-content-center align-items-center position-relative min-vh-100">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-lg border-0 animate__animated animate__fadeIn">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4 text-primary fw-bold">Create an Account</h2>
+
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+          </form>
+
+          <p class="mt-4 text-center">
+            Already have an account?
+            <a href="{% url 'login' %}" class="text-decoration-none fw-semibold">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

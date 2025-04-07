@@ -38,7 +38,7 @@
         {% for course in courses %}
         <tr>
           <td class="fw-semibold">{{ course.title }}</td>
-          <td>{{ course.description|truncatewords:8 }}</td>
+          <td>{{ course.description|truncatewords:5 }}</td>
           <td>{{ course.duration }}</td>
           <td>
             {% if course.thumbnail_url %}

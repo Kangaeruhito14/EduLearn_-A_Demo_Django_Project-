@@ -2,13 +2,18 @@
 {% block title %}Delete Lesson{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <h2>Are you sure you want to delete "{{ lesson.title }}"?</h2>
-  <p>This action cannot be undone.</p>
-  <form method="post">
+<div class="container mt-5">
+  <!-- Heading Section -->
+  <h2 class="text-center mb-4">Are you sure you want to delete the lesson "{{ lesson.title }}"?</h2>
+  
+  <!-- Warning Message -->
+  <p class="text-center text-danger mb-4">This action cannot be undone. Deleting the lesson will remove all related content.</p>
+  
+  <!-- Confirmation Form -->
+  <form method="post" class="text-center">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, Delete</button>
-    <a href="{% url 'course_list' %}" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-danger btn-lg mx-2">Yes, Delete</button>
+    <a href="{% url 'course_list' %}" class="btn btn-secondary btn-lg mx-2">Cancel</a>
   </form>
 </div>
 {% endblock %}

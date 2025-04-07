@@ -2,15 +2,41 @@
 {% block title %}Enroll in the Course{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="text-center">Enroll in the Course</h1>
+<div class="container py-5">
+    <!-- Page Heading -->
+    <h1 class="text-center text-primary mb-5">Enroll in the Course</h1>
+
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form method="post" class="p-4 border rounded bg-white shadow-sm">
+        <div class="col-md-8 col-lg-6">
+            <!-- Enrollment Form -->
+            <form method="post" class="p-5 rounded shadow border bg-light animate__animated animate__fadeIn">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary w-100">Enroll</button>
+
+                <!-- Bootstrap-styled form fields -->
+                {% for field in form %}
+                  <div class="mb-4">
+                      <label class="form-label fw-semibold text-muted">{{ field.label }}</label>
+                      {{ field }}
+                      {% if field.errors %}
+                          <div class="text-danger small mt-1">
+                              {{ field.errors|striptags }}
+                          </div>
+                      {% endif %}
+                  </div>
+                {% endfor %}
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success btn-lg w-100 mt-3">
+                    <i class="bi bi-person-plus-fill me-2"></i>Enroll Now
+                </button>
             </form>
+
+            <!-- Back Button -->
+            <div class="text-center mt-4">
+                <a href="{% url 'course_list' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Courses
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -2,24 +2,37 @@
 {% block title %}{{ student.name }}'s Progress in {{ course.title }}{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <h2>{{ student.name }}'s Progress in {{ course.title }}</h2>
-  <p><strong>Email:</strong> {{ student.email }}</p>
-  <p><strong>Progress:</strong> {{ progress|floatformat:2 }}%</p>
+<div class="container mt-5">
+  <!-- Title Section -->
+  <h2 class="text-center mb-4">{{ student.name }}'s Progress in "{{ course.title }}"</h2>
 
-  <ul class="list-group mt-3">
-    {% for lesson in lessons %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ lesson.title }}
-        {% if lesson in completed_lessons %}
-          <span class="badge bg-success">Completed</span>
-        {% else %}
-          <span class="badge bg-secondary">Not Completed</span>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+  <!-- Student Info -->
+  <div class="mb-4">
+    <p><strong class="text-muted">Email:</strong> {{ student.email }}</p>
+    <p><strong class="text-muted">Progress:</strong> <span class="h4 text-success">{{ progress|floatformat:2 }}%</span></p>
+  </div>
 
-  <a href="{% url 'student_list' course.id %}" class="btn btn-secondary mt-3">Back to Student List</a>
+  <!-- Lessons List -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        {% for lesson in lessons %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ lesson.title }}</span>
+            {% if lesson in completed_lessons %}
+              <span class="badge bg-success">Completed</span>
+            {% else %}
+              <span class="badge bg-secondary">Not Completed</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <div class="mt-4 d-flex justify-content-center">
+    <a href="{% url 'student_list' course.id %}" class="btn btn-outline-secondary btn-lg">Back to Student List</a>
+  </div>
 </div>
 {% endblock %}
