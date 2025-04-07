@@ -1,12 +1,11 @@
 {% extends "courses/base.html" %} 
-
 {% block title %}Welcome to EduLearn{% endblock %} 
 
 {% block content %}
 <style>
   .hero {
     position: relative;
-    background-image: url('https://images.pexels.com/photos/167682/pexels-photo-167682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); /* Path to your image */
+    background-image: url("https://images.pexels.com/photos/167682/pexels-photo-167682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); /* Path to your image */
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full viewport height */
@@ -30,7 +29,8 @@
   }
 </style>
 <!-- Hero Section -->
-<section class="hero bg-primary text-white text-center py-5">
+<section class="hero text-white text-center py-5">
+  <div class="hero-overlay"></div>
   <div class="container">
     <h1 class="display-4 fw-bold">Welcome to EduLearn</h1>
     <p class="lead">Empowering Education through Technology 🚀</p>
@@ -131,7 +131,7 @@
         <p><strong>Phone:</strong> +123 456 7890</p>
       </div>
       <div class="col-md-6">
-        <form action="{% url 'send_email' %}" method="POST">
+        <form method="POST">
           {% csrf_token %}
           <div class="mb-3">
             <label for="email" class="form-label">Your Email</label>
