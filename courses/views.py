@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from .models import Course, Lesson, Student
 from .forms import CourseForm, LessonForm, StudentForm, UserUpdateForm
 from django.contrib import messages
@@ -15,7 +16,18 @@ from .serializers import CourseSerializer
 
 # Home Page
 def home(request):
-    return render(request, 'courses/home.html')
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        send_mail(
+            subject=f'Contact Form from {email}',
+            message=message,
+            from_email='noreply@edulearn.com',
+            recipient_list=['support@edulearn.com'],
+            fail_silently=False,
+        )
+        messages.success(request, "Your message has been sent!")
+    return render(request, 'home.html')
 
 # Course List
 @login_required
