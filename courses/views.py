@@ -27,7 +27,7 @@ def home(request):
             fail_silently=False,
         )
         messages.success(request, "Your message has been sent!")
-    return render(request, 'home.html')
+    return render(request, 'courses/home.html')
 
 # Course List
 @login_required
