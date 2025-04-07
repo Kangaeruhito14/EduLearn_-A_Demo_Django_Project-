@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from .models import Course, Lesson, Student
 from .forms import CourseForm, LessonForm, StudentForm, UserUpdateForm
 from django.contrib import messages
@@ -20,14 +20,24 @@ def home(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         message = request.POST.get('message')
-        send_mail(
-            subject=f'Contact Form from {email}',
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['fantasyfalcoon91@gmail.com'],
-            fail_silently=False,
+        
+        subject = f'Contact Form from {email}'
+        body = message
+        from_email = settings.DEFAULT_FROM_EMAIL
+        to_email = ['fantasyfalcoon91@gmail.com']
+        
+        # Add sender's email to the reply_to list
+        email_message = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=from_email,
+            to=to_email,
+            reply_to=[email],  # <-- This is important!
         )
+        email_message.send(fail_silently=False)
+        
         messages.success(request, "Your message has been sent!")
+        
     return render(request, 'courses/home.html')
 
 # Course List
