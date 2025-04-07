@@ -17,6 +17,7 @@ from .serializers import CourseSerializer
 # def course_list(request):
 #     courses = Course.objects.all()
 #     return render(request, 'courses/index.html', {'courses': courses})
+@login_required
 class CourseListView(ListView):
     model = Course
     template_name = 'courses/index.html'
@@ -34,6 +35,7 @@ class CourseListAPI(APIView):
 #     course = get_object_or_404(Course, id=course_id)
 #     lessons = course.lessons.all()
 #     return render(request, 'courses/description.html', {'course': course, 'lessons': lessons})
+@login_required
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/description.html'
@@ -60,6 +62,7 @@ class CourseDetailAPI(APIView):
 #     else:
 #         form = CourseForm()
 #     return render(request, 'courses/course_form.html', {'form': form})
+@login_required
 class CourseCreateView(CreateView):
     model = Course
     fields = ['title', 'description', 'duration', 'thumbnail']
@@ -67,6 +70,7 @@ class CourseCreateView(CreateView):
     success_url = reverse_lazy('course_list')
 
 # Update Course
+@login_required
 def course_update(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     if request.method == "POST":
@@ -80,6 +84,7 @@ def course_update(request, course_id):
     return render(request, 'courses/course_form.html', {'form': form})
 
 # Delete Course
+@login_required
 def course_delete(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     if request.method == "POST":
@@ -89,6 +94,7 @@ def course_delete(request, course_id):
     return render(request, 'courses/course_confirm_delete.html', {'course': course})
 
 # Create Lesson
+@login_required
 def lesson_create(request):
     if request.method == "POST":
         form = LessonForm(request.POST)
@@ -101,6 +107,7 @@ def lesson_create(request):
     return render(request, 'courses/lesson_form.html', {'form': form})
 
 # Update Lesson
+@login_required
 def lesson_update(request, lesson_id):
     lesson = get_object_or_404(Lesson, id=lesson_id)
     if request.method == "POST":
@@ -114,6 +121,7 @@ def lesson_update(request, lesson_id):
     return render(request, 'courses/lesson_form.html', {'form': form})
 
 # Delete Lesson
+@login_required
 def lesson_delete(request, lesson_id):
     lesson = get_object_or_404(Lesson, id=lesson_id)
     if request.method == "POST":
@@ -123,6 +131,7 @@ def lesson_delete(request, lesson_id):
     return render(request, 'courses/lesson_confirm_delete.html', {'lesson': lesson})
 
 # Student Enrollment
+@login_required
 def enroll_student(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     if request.method == "POST":
@@ -152,12 +161,14 @@ class EnrollStudentAPI(APIView):
         return Response({'message': f'{student.email} has been enrolled in {course.title} successfully!'}, status=status.HTTP_201_CREATED)
 
 # View Enrolled Students
+@login_required
 def student_list(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     students = Student.objects.filter(enrolled_courses=course)  # Fetch students enrolled in this course
     return render(request, 'courses/student_list.html', {'course': course, 'students': students})
 
 # Edit Student
+@login_required
 def edit_student(request, student_id, course_id):
     student = get_object_or_404(Student, id=student_id)
     course = get_object_or_404(Course, id=course_id)
@@ -174,6 +185,7 @@ def edit_student(request, student_id, course_id):
     return render(request, "courses/edit_student.html", {"form": form, "student": student})
 
 # Delete Student
+@login_required
 def delete_student(request, student_id, course_id):
     student = get_object_or_404(Student, id=student_id)
     course = get_object_or_404(Course, id=course_id)
@@ -220,10 +232,10 @@ def user_logout(request):
     messages.success(request, "You have been logged out.")
     return redirect('login')
 
-@login_required
-def course_list(request):
-    courses = Course.objects.all()
-    return render(request, 'courses/index.html', {'courses': courses})
+# @login_required
+# def course_list(request):
+#     courses = Course.objects.all()
+#     return render(request, 'courses/index.html', {'courses': courses})
 
 @login_required
 def profile(request):
