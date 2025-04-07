@@ -5,7 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('start/', course_list, name='course_list'),
+    path('courses/', course_list, name='course_list'),
     path('<int:course_id>/', course_details, name='course_details'),
     # path('', CourseListView.as_view(), name='course_list'),
     path('api/courses/', CourseListAPI.as_view(), name='api_course_list'),
