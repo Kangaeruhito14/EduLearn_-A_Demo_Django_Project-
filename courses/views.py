@@ -13,6 +13,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import CourseSerializer
 
+# Home Page
+def home(request):
+    return render(request, 'home.html')
+
 # Course List
 @login_required
 def course_list(request):

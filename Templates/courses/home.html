@@ -1,0 +1,162 @@
+{% extends "courses/base.html" %} 
+
+{% block title %}Welcome to EduLearn{% endblock %} 
+
+{% block content %}
+<style>
+  .hero {
+    position: relative;
+    background-image: url('https://images.pexels.com/photos/167682/pexels-photo-167682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Adds some shadow to text for better visibility */
+  }
+
+  .hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+    z-index: 0; /* Ensures overlay is behind the text */
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1; /* Ensure content appears above the overlay */
+  }
+</style>
+<!-- Hero Section -->
+<section class="hero bg-primary text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Welcome to EduLearn</h1>
+    <p class="lead">Empowering Education through Technology 🚀</p>
+    <a href="{% url 'courses' %}" class="btn btn-warning btn-lg"
+      >Start Learning</a
+    >
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="fw-bold">About EduLearn</h2>
+        <p>
+          EduLearn is a platform that bridges the gap between technology and
+          education. We provide high-quality online courses to help students,
+          professionals, and learners from all backgrounds to develop skills and
+          knowledge in various fields.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="https://static.vecteezy.com/system/resources/thumbnails/022/717/149/small_2x/free-education-day-arrangement-on-a-table-with-copy-space-generat-ai-free-photo.jpg"
+          class="img-fluid rounded shadow"
+          alt="About EduLearn"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Goal Section -->
+<section class="goal bg-light py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold">Our Goals</h2>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card shadow border-0">
+          <img
+            src="https://student-cms.prd.timeshighereducation.com/sites/default/files/styles/default/public/istock-151597880.jpg?itok=zv65Onys"
+            class="card-img-top"
+            alt="Goal 1"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Quality Education</h5>
+            <p class="card-text">
+              We aim to provide top-notch learning resources that empower
+              learners worldwide.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow border-0">
+          <img
+            src="https://www.eschoolnews.com/files/2020/12/education-system-students.jpg"
+            class="card-img-top"
+            alt="Goal 2"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Skill Development</h5>
+            <p class="card-text">
+              We focus on providing the skills necessary for career growth and
+              personal development.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow border-0">
+          <img
+            src="https://epe.brightspotcdn.com/dims4/default/57a91a2/2147483647/strip/true/crop/1547x1050+230+0/resize/840x570!/quality/90/?url=https%3A%2F%2Fepe-brightspot.s3.us-east-1.amazonaws.com%2F14%2F6e%2Fbc298fed43ea8c82ecc9d360a793%2Fyoung-teacher-648942986.jpg"
+            class="card-img-top"
+            alt="Goal 3"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Global Reach</h5>
+            <p class="card-text">
+              Our mission is to make learning accessible to anyone, anywhere in
+              the world.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold">Contact Us</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Email:</strong> support@edulearn.com</p>
+        <p><strong>Phone:</strong> +123 456 7890</p>
+      </div>
+      <div class="col-md-6">
+        <form action="{% url 'send_email' %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              name="message"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
