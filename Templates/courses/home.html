@@ -2,32 +2,7 @@
 {% block title %}Welcome to EduLearn{% endblock %} 
 
 {% block content %}
-<style>
-  .hero {
-    position: relative;
-    background-image: url("https://images.pexels.com/photos/167682/pexels-photo-167682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); /* Path to your image */
-    background-size: cover;
-    background-position: center;
-    height: 100vh; /* Full viewport height */
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Adds some shadow to text for better visibility */
-  }
 
-  .hero .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-    z-index: 0; /* Ensures overlay is behind the text */
-  }
-
-  .hero .container {
-    position: relative;
-    z-index: 1; /* Ensure content appears above the overlay */
-  }
-</style>
 <!-- Hero Section -->
 <section class="hero text-white text-center py-5">
   <div class="hero-overlay"></div>
