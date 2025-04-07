@@ -14,7 +14,7 @@
     <!-- Custom Styling -->
     <style>
         body {
-            background-color: #cad6aef5;
+            background-color: #e7f7fd;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -35,19 +35,9 @@
             color: #ffd700 !important; /* Gold hover */
         }
 
-        .container1 {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-
-        .container2 {
+        .container {
             padding-top: 30px;
             padding-bottom: 30px;
-        }
-
-        .container3 {
-            padding-top: 15px;
-            padding-bottom: 15px;
         }
 
         .card, .table {
@@ -71,7 +61,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-        <div class="container1">
+        <div class="container">
             <a class="navbar-brand" href="/">EduLearn</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,7 +87,7 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="container2">
+    <div class="container">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} shadow-sm">{{ message }}</div>
@@ -108,7 +98,7 @@
 
     <!-- Footer -->
     <footer class="text-center p-4">
-        <div class="container3">
+        <div class="container">
             <p class="mb-0">&copy; 2025 <strong>EduLearn</strong>. All rights reserved.</p>
             <small>Empowering Education through Technology 🚀</small>
         </div>

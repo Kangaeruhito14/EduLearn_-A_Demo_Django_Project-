@@ -2,6 +2,23 @@
 {% block title %}Course Management{% endblock %}
 
 {% block content %}
+<!-- Add custom styles -->
+<style>
+    .btn-outline-warning {
+        border-color: #ff8c00; /* Darker yellow-orange border */
+        color: #ff8c00; /* Darker text color */
+    }
+
+    .btn-outline-warning:hover {
+        background-color: #ff8c00; /* Background color on hover */
+        color: white; /* Text color on hover */
+    }
+
+    .btn-outline-warning:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.5); /* Add a glowing effect on focus */
+    }
+</style>
+
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="fw-bold text-primary">📚 Course Management</h2>
