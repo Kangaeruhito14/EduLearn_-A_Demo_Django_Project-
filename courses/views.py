@@ -5,23 +5,24 @@ from django.contrib.auth.decorators import login_required
 from .models import Course, Lesson, Student
 from .forms import CourseForm, LessonForm, StudentForm, UserUpdateForm
 from django.contrib import messages
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
+# from django.views.generic import ListView, DetailView
+# from django.views.generic.edit import CreateView
+# from django.urls import reverse_lazy
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import CourseSerializer
 
 # Course List
-# def course_list(request):
-#     courses = Course.objects.all()
-#     return render(request, 'courses/index.html', {'courses': courses})
 @login_required
-class CourseListView(ListView):
-    model = Course
-    template_name = 'courses/index.html'
-    context_object_name = 'courses'
+def course_list(request):
+    courses = Course.objects.all()
+    return render(request, 'courses/index.html', {'courses': courses})
+
+# class CourseListView(ListView):
+#     model = Course
+#     template_name = 'courses/index.html'
+#     context_object_name = 'courses'
 
 # API for Course List
 class CourseListAPI(APIView):
@@ -31,15 +32,16 @@ class CourseListAPI(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Course Detail
-# def course_details(request, course_id):
-#     course = get_object_or_404(Course, id=course_id)
-#     lessons = course.lessons.all()
-#     return render(request, 'courses/description.html', {'course': course, 'lessons': lessons})
 @login_required
-class CourseDetailView(DetailView):
-    model = Course
-    template_name = 'courses/description.html'
-    context_object_name = 'course'
+def course_details(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    lessons = course.lessons.all()
+    return render(request, 'courses/description.html', {'course': course, 'lessons': lessons})
+
+# class CourseDetailView(DetailView):
+#     model = Course
+#     template_name = 'courses/description.html'
+#     context_object_name = 'course'
 
 # API for Course Detail
 class CourseDetailAPI(APIView):
@@ -52,22 +54,23 @@ class CourseDetailAPI(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Create Course
-# def course_create(request):
-#     if request.method == "POST":
-#         form = CourseForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, "Course created successfully!")
-#             return redirect('course_list')
-#     else:
-#         form = CourseForm()
-#     return render(request, 'courses/course_form.html', {'form': form})
 @login_required
-class CourseCreateView(CreateView):
-    model = Course
-    fields = ['title', 'description', 'duration', 'thumbnail']
-    template_name = 'courses/course_form.html'
-    success_url = reverse_lazy('course_list')
+def course_create(request):
+    if request.method == "POST":
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Course created successfully!")
+            return redirect('course_list')
+    else:
+        form = CourseForm()
+    return render(request, 'courses/course_form.html', {'form': form})
+
+# class CourseCreateView(CreateView):
+#     model = Course
+#     fields = ['title', 'description', 'duration', 'thumbnail']
+#     template_name = 'courses/course_form.html'
+#     success_url = reverse_lazy('course_list')
 
 # Update Course
 @login_required

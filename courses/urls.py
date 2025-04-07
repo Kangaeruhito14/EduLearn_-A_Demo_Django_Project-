@@ -4,14 +4,14 @@ from django.contrib.auth import views as auth_views
 from .views import *
 
 urlpatterns = [
-    # path('', course_list, name='course_list'),
-    # path('<int:course_id>/', course_details, name='course_details'),
-    path('', CourseListView.as_view(), name='course_list'),
+    path('', course_list, name='course_list'),
+    path('<int:course_id>/', course_details, name='course_details'),
+    # path('', CourseListView.as_view(), name='course_list'),
     path('api/courses/', CourseListAPI.as_view(), name='api_course_list'),
-    path('<int:pk>/', CourseDetailView.as_view(), name='course_details'),
+    # path('<int:pk>/', CourseDetailView.as_view(), name='course_details'),
     path('api/courses/<int:pk>/', CourseDetailAPI.as_view(), name='api_course_detail'),
-    # path('create/', course_create, name='course_create'),
-    path('create/', CourseCreateView.as_view(), name='course_create'),
+    path('create/', course_create, name='course_create'),
+    # path('create/', CourseCreateView.as_view(), name='course_create'),
     path('<int:course_id>/update/', course_update, name='course_update'),
     path('<int:course_id>/delete/', course_delete, name='course_delete'),
     path('lesson/create/', lesson_create, name='lesson_create'),
