@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['title', 'description', 'duration', 'thumbnail']
+        fields = ['title', 'description', 'duration', 'thumbnail_url']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
