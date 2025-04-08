@@ -82,7 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'eduLearn.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
