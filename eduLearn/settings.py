@@ -27,10 +27,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-iiv#209w!o3qiixng-lmmi8%1^!d)rjz^g5yk6@1vk#2hh9*4x'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'FALSE'
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['edu-learn-64v6.onrender.com']
 
@@ -90,8 +90,8 @@ LOGIN_URL = 'login'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'fantasyfalcoon91@gmail.com'
-EMAIL_HOST_PASSWORD = 'wkqjgjdbpkxqfwhl'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'EduLearn <fantasyfalcoon91@gmail.com>'
 
@@ -158,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dmpclkrea',
-    'API_KEY': '569676343861136',
-    'API_SECRET': 'sCl6uDUo2f0PEyDicuYACq8CTTU',
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
 }
