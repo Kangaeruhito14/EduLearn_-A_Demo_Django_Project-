@@ -15,7 +15,7 @@
     <a href="{% url 'lesson_create' %}" class="btn btn-success shadow-sm">➕ Add New Lesson</a>
   </div>
 
-  <div class="list-group shadow-sm rounded">
+  <div class="list-group shadow-sm rounded mb-4">
     {% for lesson in course.lessons.all %}
       <div class="list-group-item d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-2">
@@ -38,6 +38,11 @@
         🚫 No lessons available for this course.
       </div>
     {% endfor %}
+  </div>
+
+  <!-- Back to Courses Button -->
+  <div class="text-end">
+    <a href="{% url 'course_list' %}" class="btn btn-secondary">⬅️ Back to Courses</a>
   </div>
 </div>
 {% endblock %}
