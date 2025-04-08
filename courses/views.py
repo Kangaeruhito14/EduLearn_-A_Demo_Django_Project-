@@ -260,7 +260,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out.")
-    return redirect('')
+    return redirect('home')
 
 # @login_required
 # def course_list(request):
